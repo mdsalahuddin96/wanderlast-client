@@ -10,6 +10,8 @@ import shieldCheck from "@/assets/ShieldCheck.png";
 import person1 from "@/assets/person1.png";
 import person2 from "@/assets/person2.png";
 import { HiOutlineArrowLeft, HiOutlineArrowRight } from "react-icons/hi2";
+import { FiArrowRight } from "react-icons/fi";
+import Link from "next/link";
 export default async function Home() {
   const featuredDes = await getFeturedDes();
   return (
@@ -24,12 +26,14 @@ export default async function Home() {
               Handpicked travel experiences for the adventure seekers
             </p>
           </div>
-          <Button
-            variant="outline"
-            className="rounded-lg border-blue-500 text-cyan-500"
-          >
-            All Destinations <FaArrowRight />{" "}
-          </Button>
+          <Link href={"/destinations"}>
+            <Button
+              variant="outline"
+              className="rounded-lg border-blue-500 text-cyan-500"
+            >
+              All Destinations <FaArrowRight />{" "}
+            </Button>
+          </Link>
         </div>
         <div>
           <FeaturedDestination featuredDes={featuredDes} />
@@ -144,6 +148,22 @@ export default async function Home() {
               width={200}
             ></Image>
           </div>
+        </div>
+      </div>
+
+      {/* start travel with us */}
+      <div className="py-20 bg-[#0c0b0b]">
+        <div className="bg-[url(../assets/CTA.png)] w-full h-80">
+          <div className="w-full h-full bg-black opacity-70"></div>
+        </div>
+        <div className="container mx-auto space-y-2 mt-10 flex flex-col justify-center items-center text-white">
+          <h1 className="text-6xl">Ready to Start Your Journey?</h1>
+          <p className="text-lg ">
+            Join thousands of travelers who have discovered the world with us
+          </p>
+          <button className="uppercase bg-white text-black mt-4 px-5 py-3 cursor-pointer flex items-center gap-4">
+            Book Your Trip Today <FiArrowRight />
+          </button>
         </div>
       </div>
     </div>

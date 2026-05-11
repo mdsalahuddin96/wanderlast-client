@@ -9,7 +9,7 @@ import NavLink from "./NavLink";
 
 const navItems = [
   { href: "/", text: "Home" },
-  { href: "/destination", text: "Destination" },
+  { href: "/destinations", text: "Destination" },
   { href: "/my-bookings", text: "My Bookings" },
   { href: "/admin", text: "Admin" }
 ];

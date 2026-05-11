@@ -1,4 +1,5 @@
 import { Separator } from "@heroui/react";
+import { FiArrowRight } from "react-icons/fi";
 const Banner = () => {
   return (
     <div className="bg-[url('../assets/Banner.png')] text-white  flex justify-between flex-col items-center  gap-5 h-150">
@@ -13,8 +14,8 @@ const Banner = () => {
         </p>
 
         <div className="flex gap-5">
-          <button className="uppercase bg-cyan-500 px-5 py-3 cursor-pointer">
-            Explore Now
+          <button className="uppercase bg-cyan-500 px-5 py-3 cursor-pointer flex items-center gap-4">
+            Explore Now <FiArrowRight/>
           </button>
 
           <button className="uppercase px-5 py-3 bg-white/50 cursor-pointer">
