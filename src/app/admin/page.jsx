@@ -11,6 +11,8 @@ import {
   Select,
   ListBox,
 } from "@heroui/react";
+import { redirect } from "next/navigation";
+
 import { BiSave } from "react-icons/bi";
 import { toast } from "react-toastify";
 
@@ -29,6 +31,7 @@ const AdminPage = () => {
         const data = await res.json()
         if(data.insertedId){
             toast.success("Package information added successfully!")
+           redirect("/destinations")
         }
         else{
             toast.error("Something wrong!")

@@ -12,18 +12,23 @@ import {
   Select,
   ListBox,
 } from "@heroui/react";
+import { redirect } from "next/navigation";
+
 import { BiSave } from "react-icons/bi";
+import { GrUpdate } from "react-icons/gr";
 
 
 export default async function EditDestination({params}) {
   const {id}=await params;
   const destination = await getDestinationById(id);
   const {destinationName,imageUrl, category,country,price, rating,duration,departureDate,description}=destination;
-  const [day,month,year]=departureDate.split("/")
-  const date=`${year}-${month.padStart(2, "0")}-${day.padStart(2, "0")}`
   const updateDestination=async(formData)=>{
     "use server"
-    const updatedData=Object.fromEntries(formData.entries())
+    const dataArray=formData.entries() //convert special form data to a array of array using entries();
+
+    //first filter the array with key then convert the array of array to an object using fromEntries() 
+    const updatedData=Object.fromEntries(dataArray.filter(([key])=>!key.startsWith("$ACTION")))
+   
     const res = await fetch(`http://localhost:8000/updateDestination/${id}`,{
       method:"PATCH",
       headers:{
@@ -31,8 +36,10 @@ export default async function EditDestination({params}) {
       },
       body:JSON.stringify(updatedData)
     })
-    
-    console.log(res)
+    const data = await res.json()
+    if(data.modifiedCount>0){
+      redirect(`/destinationDetails/${id}`)
+    }
   }
   return (
     <div className="container mx-auto py-10">
@@ -58,7 +65,7 @@ export default async function EditDestination({params}) {
                     <Label>Price(USD)</Label>
                     <Input placeholder="e.g., 1299" />
                   </TextField>
-                  <TextField isRequired name="departureDate" type="date" defaultValue={date}>
+                  <TextField isRequired name="departureDate" type="date" defaultValue={departureDate}>
                     <Label>Departure Date</Label>
                     <Input />
                   </TextField>
@@ -130,7 +137,7 @@ export default async function EditDestination({params}) {
                 type="submit"
                 className="rounded-none bg-cyan-600 text-white"
               >
-                <BiSave /> Add Travel Package
+                <GrUpdate/> Update Package
               </Button>
               <Button
                 type="reset"
