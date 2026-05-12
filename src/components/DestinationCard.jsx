@@ -1,7 +1,7 @@
 import { Button } from "@heroui/react";
 import Image from "next/image";
 import React from "react";
-import { BiMap, BiStar,imageUrl,country, BiCalendarEvent } from "react-icons/bi";
+import { BiMap, BiStar,BiCalendarEvent } from "react-icons/bi";
 import { HiArrowUpRight } from "react-icons/hi2";
 
 const DestinationCard = ({destination}) => {

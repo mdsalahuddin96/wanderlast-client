@@ -1,9 +1,7 @@
 "use client";
-import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { BsPerson } from "react-icons/bs";
-import logo from "@/assets/Wanderlast.png";
 import NavLink from "./NavLink";
 
 
@@ -55,7 +53,7 @@ const Navbar = () => {
             }
         </ul>
         <div>
-            <h1 className="text-2xl font-extrabold text-[#15a1bf]">Wanderelite</h1>
+            <h1 className="text-2xl font-extrabold text-[#15a1bf]">Wanderlust</h1>
           {/* <Image src={logo} alt="Logo" height={100} width={100} /> */}
         </div>
         <div className="flex items-center gap-3">

@@ -42,7 +42,7 @@ export default async function Home() {
       {/* Why choose Wanderlast */}
       <div className="bg-[#edfcff] mt-5 py-20">
         <div className="container mx-auto space-y-2 text-center">
-          <h1 className="text-6xl">Why Choose Wanderlast</h1>
+          <h1 className="text-6xl">Why Choose Wanderlust</h1>
           <p className="text-lg text-gray-600">
             Your trusted partner for exceptional travel experiences
           </p>
