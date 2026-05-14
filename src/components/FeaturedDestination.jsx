@@ -48,46 +48,46 @@ export default function FeaturedDestination({ featuredDes }) {
         {featuredDes.map((des, index) => (
           <SwiperSlide key={index}>
             <div className=" overflow-hidden group">
-              <Link href={`/destinationDetails/${des._id}`}>
-                <div className="max-w-120 relative">
-                  <div className="flex items-center justify-center w-15 text-xs font-medium px-2 py-1 absolute right-5 top-5 rounded glass">
-                    {des.rating}
-                    <BiStar />
-                  </div>
-                  <Image
-                    src={des.imageUrl}
-                    alt={des.destinationName}
-                    height={600}
-                    width={600}
-                    className="w-full object-cover"
-                  />
-                  <div className="flex items-center gap-1.5 mt-3 text-gray-600">
-                    <BiMap />
-                    <span>{des.country}</span>
-                  </div>
-                  <div className="flex justify-between items-center">
-                    <h1 className="text-2xl text-black font-medium">
-                      {des.destinationName}
-                    </h1>
-                    <p className="text-2xl font-medium">
-                      ${des.price}
-                      <span className="text-sm  text-gray-500">/person</span>
-                    </p>
-                  </div>
-                  <div className="text-gray-600 flex items-center gap-2">
-                    <BiCalendarEvent />
-                    <p>
-                      {des.duration}/{des.duration.split(" ")[0] - 1} Nights
-                    </p>
-                  </div>
+              <div className="max-w-120 relative">
+                <div className="flex items-center justify-center w-15 text-xs font-medium px-2 py-1 absolute right-5 top-5 rounded glass">
+                  {des.rating}
+                  <BiStar />
+                </div>
+                <Image
+                  src={des.imageUrl}
+                  alt={des.destinationName}
+                  height={600}
+                  width={600}
+                  className="w-full object-cover"
+                />
+                <div className="flex items-center gap-1.5 mt-3 text-gray-600">
+                  <BiMap />
+                  <span>{des.country}</span>
+                </div>
+                <div className="flex justify-between items-center">
+                  <h1 className="text-2xl text-black font-medium">
+                    {des.destinationName}
+                  </h1>
+                  <p className="text-2xl font-medium">
+                    ${des.price}
+                    <span className="text-sm  text-gray-500">/person</span>
+                  </p>
+                </div>
+                <div className="text-gray-600 flex items-center gap-2">
+                  <BiCalendarEvent />
+                  <p>
+                    {des.duration}/{des.duration.split(" ")[0] - 1} Nights
+                  </p>
+                </div>
+                <Link href={`/destinationDetails/${des._id}`}>
                   <Button
                     variant="outline"
                     className="mt-5 border-[#15a1bf] rounded-lg text-[#15a1bf]"
                   >
-                    Book Now <HiArrowUpRight />{" "}
+                    View Details <HiArrowUpRight />{" "}
                   </Button>
-                </div>
-              </Link>
+                </Link>
+              </div>
             </div>
           </SwiperSlide>
         ))}

@@ -13,8 +13,6 @@ import {
   ListBox,
 } from "@heroui/react";
 import { redirect } from "next/navigation";
-
-import { BiSave } from "react-icons/bi";
 import { GrUpdate } from "react-icons/gr";
 
 
@@ -143,6 +141,7 @@ export default async function EditDestination({params}) {
                 type="reset"
                 variant="outline"
                 className="rounded-none border-red-500 text-red-600"
+                // onClick={(e)=>e.target.reset}
               >
                 Reset
               </Button>

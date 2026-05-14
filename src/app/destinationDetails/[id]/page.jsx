@@ -3,10 +3,12 @@ import Image from "next/image";
 import { FaStar } from "react-icons/fa6";
 import { PiMapPinAreaBold } from "react-icons/pi";
 import { FaCalendarDays } from "react-icons/fa6";
-import { AlertDialog, Button } from "@heroui/react";
 import { FiArrowLeft, FiArrowRight } from "react-icons/fi";
 import { BiCheck, BiEdit } from "react-icons/bi";
+
 import Link from "next/link";
+import DeleteDestinationBtn from "@/components/DeleteDestinationBtn";
+import { Button } from "@heroui/react";
 const DestinationDetailsPage = async ({ params }) => {
   const { id } = await params;
   const destination = await getDestinationById(id);
@@ -25,39 +27,7 @@ const DestinationDetailsPage = async ({ params }) => {
               <BiEdit /> Edit
             </Button>
           </Link>
-          <AlertDialog>
-            <Button variant="danger" className="rounded-none">
-              Delete
-            </Button>
-            <AlertDialog.Backdrop>
-              <AlertDialog.Container>
-                <AlertDialog.Dialog className="sm:max-w-[400px]">
-                  <AlertDialog.CloseTrigger />
-                  <AlertDialog.Header>
-                    <AlertDialog.Icon status="danger" />
-                    <AlertDialog.Heading>
-                      Delete destination permanently?
-                    </AlertDialog.Heading>
-                  </AlertDialog.Header>
-                  <AlertDialog.Body>
-                    <p>
-                      This will permanently delete{" "}
-                      <strong>{destination.destinationName}</strong> and all of
-                      its data. This action cannot be undone.
-                    </p>
-                  </AlertDialog.Body>
-                  <AlertDialog.Footer>
-                    <Button slot="close" variant="tertiary">
-                      Cancel
-                    </Button>
-                    <Button slot="close" variant="danger">
-                      Confirm Delete
-                    </Button>
-                  </AlertDialog.Footer>
-                </AlertDialog.Dialog>
-              </AlertDialog.Container>
-            </AlertDialog.Backdrop>
-          </AlertDialog>
+          <DeleteDestinationBtn destination={destination} />
         </div>
       </div>
       <div className="my-8">
