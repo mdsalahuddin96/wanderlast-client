@@ -15,3 +15,13 @@ export const getDestinationById=async(id)=>{
   const destination=await res.json()
   return destination;
 }
+
+export const getBookingsByUserId=async(id)=>{
+  const res=await fetch(`http://localhost:8000/mybookings/${id}`,{
+    headers:{
+      authorization:"loged out"
+    }
+  })
+  const bookings=await res.json()
+  return bookings;
+}

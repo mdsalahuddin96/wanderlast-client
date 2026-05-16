@@ -33,11 +33,11 @@ const SigninPage = () => {
       toast.success("Login Successful!");
     }
   };
-  const handleGoogleLogin = async () => {
-    const data = await authClient.signIn.social({
-      provider: "google",
-    });
-  };
+  // const handleGoogleLogin = async () => {
+  //   const data = await authClient.signIn.social({
+  //     provider: "google",
+  //   });
+  // };
   return (
     <div className="bg-[#f9fafcFF] min-h-screen flex flex-col items-center">
       <div className="text-center mt-10 mb-2 space-y-0.5">
@@ -116,7 +116,7 @@ const SigninPage = () => {
             <Button
               variant="outline"
               className="w-full rounded-none"
-              onClick={handleGoogleLogin}
+              
             >
               <FcGoogle />
               Sign In with Google

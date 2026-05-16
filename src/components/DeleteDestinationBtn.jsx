@@ -1,6 +1,6 @@
 "use client";
 import { AlertDialog, Button } from "@heroui/react";
-import { redirect, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 import { RiDeleteBinFill } from "react-icons/ri";
 import { toast } from "react-toastify";

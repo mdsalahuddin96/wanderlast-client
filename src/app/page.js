@@ -1,3 +1,7 @@
+// BETTER_AUTH_SECRET=OFZp4FIrRWKggz2L6a96AsXnQ83MEnzT
+// BETTER_AUTH_URL=http://localhost:3000 # Base URL of your app
+// MONGO_URI=mongodb+srv://wanderlustUser:JcaVbRRR5WoBs3l1@cluster0.bvrcyyi.mongodb.net/?appName=Cluster0
+
 import Banner from "@/components/Banner";
 import FeaturedDestination from "@/components/FeaturedDestination";
 import { getFeturedDes } from "@/lib/service";

@@ -3,12 +3,13 @@ import Image from "next/image";
 import { FaStar } from "react-icons/fa6";
 import { PiMapPinAreaBold } from "react-icons/pi";
 import { FaCalendarDays } from "react-icons/fa6";
-import { FiArrowLeft, FiArrowRight } from "react-icons/fi";
-import { BiCheck, BiEdit } from "react-icons/bi";
+import { FiArrowLeft } from "react-icons/fi";
+import { BiEdit } from "react-icons/bi";
 
 import Link from "next/link";
 import DeleteDestinationBtn from "@/components/DeleteDestinationBtn";
 import { Button } from "@heroui/react";
+import BookNowCard from "@/components/BookNowCard";
 const DestinationDetailsPage = async ({ params }) => {
   const { id } = await params;
   const destination = await getDestinationById(id);
@@ -66,29 +67,7 @@ const DestinationDetailsPage = async ({ params }) => {
             </div>
           </div>
           <div className="right flex justify-end">
-            <div className="w-80 border p-4">
-              <p className="text-gray-500">Starting from</p>
-              <p className="text-2xl text-cyan-500">${destination?.price}</p>
-              <p className="text-gray-500">per person</p>
-              <p className="mt-10 border py-1 px-2 bg-[#eeeeee]">
-                {destination?.departureDate || "N/A"}
-              </p>
-              <button className="bg-[#15a1bf] px-5 py-2 w-full mt-10 cursor-pointer text-white flex items-center justify-center gap-1">
-                Book Now <FiArrowRight />
-              </button>
-              <div className="mt-4 space-y-1">
-                <p className="flex items-center gap-1 text-gray-600">
-                  <BiCheck color="green" size={25} /> Free Cancellation up to 7
-                  days
-                </p>
-                <p className="flex items-center gap-1 text-gray-600">
-                  <BiCheck color="green" size={25} /> Travel insurance included
-                </p>
-                <p className="flex items-center gap-1 text-gray-600">
-                  <BiCheck color="green" size={25} /> 24/7 customer support
-                </p>
-              </div>
-            </div>
+           <BookNowCard destination={destination}/>
           </div>
         </div>
       </div>

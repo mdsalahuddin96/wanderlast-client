@@ -11,6 +11,7 @@ import {
   TextField,
 } from "@heroui/react";
 import Link from "next/link";
+import { redirect } from "next/navigation";
 import { useState } from "react";
 import { FcGoogle } from "react-icons/fc";
 import { IoIosEye, IoIosEyeOff } from "react-icons/io";
@@ -29,7 +30,7 @@ const SignupPage = () => {
       },
       {
         onSuccess: () => {
-          alert("SignUp Successful");
+          redirect("/signin")
         },
       },
     );
@@ -39,11 +40,11 @@ const SignupPage = () => {
       toast.success("Signup Successful!");
     }
   };
-  const handleGoogleLogin = async () => {
-    const data = await authClient.signIn.social({
-      provider: "google",
-    });
-  };
+  // const handleGoogleLogin = async () => {
+  //   const data = await authClient.signIn.social({
+  //     provider: "google",
+  //   });
+  // };
   return (
     <div className="bg-[#f9fafcFF] min-h-screen flex flex-col items-center mb-10">
       <div className="text-center mt-10 mb-2 space-y-0.5">
@@ -140,7 +141,7 @@ const SignupPage = () => {
             <Button
               variant="outline"
               className="w-full rounded-none"
-              onClick={handleGoogleLogin}
+              // onClick={handleGoogleLogin}
             >
               <FcGoogle />
               Sign In with Google
