@@ -5,6 +5,7 @@ import { BsPerson } from "react-icons/bs";
 import NavLink from "./NavLink";
 import { signOut, useSession } from "@/lib/auth-client";
 import { Avatar, Button, Spinner } from "@heroui/react";
+import { useRouter } from "next/navigation";
 
 const navItems = [
   { href: "/", text: "Home" },
@@ -15,9 +16,11 @@ const navItems = [
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { data, isPending } = useSession();
+  const router=useRouter()
   const user = data?.user;
   const handleLogout = async () => {
     await signOut();
+    router.refresh()
   };
   return (
     <nav className="sticky top-0 z-40 w-full border-b border-separator bg-background/70 backdrop-blur-lg">

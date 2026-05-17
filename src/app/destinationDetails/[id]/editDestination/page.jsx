@@ -27,7 +27,7 @@ export default async function EditDestination({params}) {
     //first filter the array with key then convert the array of array to an object using fromEntries() 
     const updatedData=Object.fromEntries(dataArray.filter(([key])=>!key.startsWith("$ACTION")))
    
-    const res = await fetch(`http://localhost:8000/updateDestination/${id}`,{
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/updateDestination/${id}`,{
       method:"PATCH",
       headers:{
         "content-type":"application/json"

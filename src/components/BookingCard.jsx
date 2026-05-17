@@ -21,7 +21,7 @@ const BookingCard = ({ booking }) => {
     price,
   } = booking;
   const handleBookingCancel = async () => {
-    const res = await fetch(`http://localhost:8000/cancelBooking/${_id}`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/cancelBooking/${_id}`, {
       method: "DELETE",
     });
     const data = await res.json();

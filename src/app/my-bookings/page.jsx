@@ -8,8 +8,11 @@ const MyBookingsPage = async () => {
   const { user } = await auth.api.getSession({
     headers: await headers(),
   });
+  const {token}=await auth.api.getToken({
+    headers:await headers()
+  })
   const userId = user?.id;
-  const bookings = await getBookingsByUserId(userId);
+  const bookings = await getBookingsByUserId(userId,token);
   return (
     <div className="container mx-auto">
       <div className="my-10 space-y-3">

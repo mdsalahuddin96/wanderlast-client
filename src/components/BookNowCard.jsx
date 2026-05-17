@@ -1,6 +1,6 @@
 "use client";
 
-import { useSession } from "@/lib/auth-client";
+import { authClient, useSession } from "@/lib/auth-client";
 import { DateField, Input, Label } from "@heroui/react";
 import { redirect } from "next/navigation";
 import { useState } from "react";
@@ -29,11 +29,14 @@ const BookNowCard = ({ destination }) => {
   };
 
   const handleBooking = async () => {
+    const {data:tokenData}=await authClient.token()
+    console.log(tokenData)
     if (departureDate !== null) {
-      const res = await fetch("http://localhost:8000/bookings", {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/bookings`, {
         method: "POST",
         headers: {
           "content-type": "application/json",
+          "authorization":`Bearer ${tokenData?.token}`
         },
         body: JSON.stringify(bookingData),
       });

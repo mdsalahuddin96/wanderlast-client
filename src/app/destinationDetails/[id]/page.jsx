@@ -5,15 +5,20 @@ import { PiMapPinAreaBold } from "react-icons/pi";
 import { FaCalendarDays } from "react-icons/fa6";
 import { FiArrowLeft } from "react-icons/fi";
 import { BiEdit } from "react-icons/bi";
-
 import Link from "next/link";
 import DeleteDestinationBtn from "@/components/DeleteDestinationBtn";
 import { Button } from "@heroui/react";
 import BookNowCard from "@/components/BookNowCard";
+import { auth } from "@/lib/auth";
+import { headers } from "next/headers";
 const DestinationDetailsPage = async ({ params }) => {
   const { id } = await params;
-  const destination = await getDestinationById(id);
-
+  const { token } = await auth.api.getToken({ headers: await headers() });
+  const destination = await getDestinationById(id, token);
+  let night = 0;
+  if (destination?.duration) {
+    night = parseInt(destination.duration.split(" ")[0] - 1);
+  }
   return (
     <div className="container mx-auto">
       <div className="mt-10 flex justify-between items-center">
@@ -55,7 +60,7 @@ const DestinationDetailsPage = async ({ params }) => {
                 </p>
                 <p className="flex items-center gap-1 font-semibold">
                   <FaCalendarDays /> {destination?.duration || "Null"}/{" "}
-                  {destination?.duration.split(" ")[0] - 1} Nights
+                  {night} Nights
                 </p>
               </div>
               <div className="">
@@ -67,7 +72,7 @@ const DestinationDetailsPage = async ({ params }) => {
             </div>
           </div>
           <div className="right flex justify-end">
-           <BookNowCard destination={destination}/>
+            <BookNowCard destination={destination} />
           </div>
         </div>
       </div>

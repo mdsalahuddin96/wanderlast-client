@@ -21,7 +21,7 @@ const AdminPage = () => {
         event.preventDefault()
         const formData=new FormData(event.currentTarget)
         const packageData=Object.fromEntries(formData.entries())
-        const res=await fetch("http://localhost:8000/addDestination",{
+        const res=await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/addDestination`,{
             method:"POST",
             headers:{
                 "content-type":"application/json"

@@ -9,7 +9,7 @@ const DeleteDestinationBtn = ({ destination }) => {
   const router = useRouter();
   const handleDelete = async () => {
     const res = await fetch(
-      `http://localhost:8000/deleteDestination/${destination._id}`,
+      `${process.env.NEXT_PUBLIC_SERVER_URL}/deleteDestination/${destination._id}`,
       {
         method: "DELETE",
       },
